@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 from typing import Any, List, Optional
+from peft import PeftModel
 
 import tqdm
 import torch
@@ -47,6 +48,8 @@ class DeepSeekFIM(PatchGenerationStrategy):
             model_name in self.__SUPPORTED_MODELS
         ), f"Model {model_name} not supported by {self.__class__.__name__}"
         self.model_name = model_name
+        self.adapter_name = kwargs.get("adapter_name", None)
+
         # Generation settings
         assert (
             kwargs.get("generation_strategy", "beam_search")
@@ -86,6 +89,12 @@ class DeepSeekFIM(PatchGenerationStrategy):
             self.__MODEL = AutoModelForCausalLM.from_pretrained(
                 self.model_name, **kwargs
             )
+            # Load LoRA adapter if specified
+            if self.adapter_name:
+                self.__MODEL = PeftModel.from_pretrained(
+                    self.__MODEL, self.adapter_name
+                )
+                self.__MODEL = self.__MODEL.merge_and_unload()
             self.__MODEL.eval()
             self.__MODELS_LOADED = True
 
