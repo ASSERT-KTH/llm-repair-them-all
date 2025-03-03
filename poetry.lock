@@ -270,23 +270,25 @@ files = [
 
 [[package]]
 name = "bitsandbytes"
-version = "0.43.3"
+version = "0.45.3"
 description = "k-bit optimizers and matrix multiplication routines."
 optional = false
-python-versions = "*"
+python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "bitsandbytes-0.43.3-py3-none-manylinux_2_24_x86_64.whl", hash = "sha256:cc99507c352be0715098b2c7577b690dd158972dc4ea10c7495bac104c7c79f0"},
-    {file = "bitsandbytes-0.43.3-py3-none-win_amd64.whl", hash = "sha256:257f6552f2144748a84e6c44e1f7a98f3da888f675ed74e18fd7f7eb13c6cafa"},
+    {file = "bitsandbytes-0.45.3-py3-none-manylinux_2_24_x86_64.whl", hash = "sha256:720d67ffa8a5c61c958fb62517e8abbb2ab0ac1b33b66506ae911cb34c836c70"},
+    {file = "bitsandbytes-0.45.3-py3-none-win_amd64.whl", hash = "sha256:7251d71814a653b2b78b69149f1e88753598688c760c99cbbfb0512ba4ea39c6"},
 ]
 
 [package.dependencies]
-numpy = "*"
-torch = "*"
+numpy = ">=1.17"
+torch = ">=2.0,<3"
 
 [package.extras]
 benchmark = ["matplotlib", "pandas"]
-test = ["scipy"]
+dev = ["bitsandbytes[test]", "build (>=1.0.0,<2)", "pre-commit (>=3.5.0,<4)", "ruff (==0.6.9)", "wheel (>=0.42,<1)"]
+docs = ["hf-doc-builder (==0.5.0)"]
+test = ["einops (>=0.8.0,<0.9.0)", "lion-pytorch (==0.2.3)", "pytest (>=8.3,<9.0)", "scipy (>=1.10.1,<2) ; python_version < \"3.9\"", "scipy (>=1.11.4,<2) ; python_version >= \"3.9\"", "transformers (>=4.30.1,<5)"]
 
 [[package]]
 name = "black"
@@ -3589,4 +3591,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "2f76fc803a2b76277affc2bb0eb6d9709ba936d5b8101a6f92823bc49f9038ca"
+content-hash = "eed394a8d0a9b586cab516f26feb9c0a609f7f25f9d811889853732df915d271"
