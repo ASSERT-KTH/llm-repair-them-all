@@ -41,7 +41,6 @@ google-generativeai = "^0.8.0"
 anthropic = "^0.48.0"
 mistralai = "^1.2.3"
 pre-commit = "^4.1.0"
-triton = "^3.2.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
