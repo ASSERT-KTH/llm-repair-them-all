@@ -33,7 +33,6 @@ torch = "^2.6.0"
 accelerate = "^1.4.0"
 sentencepiece = "^0.2.0"
 datasets = "^3.3.2"
-peft = "^0.14.0"
 bitsandbytes = "^0.45.3"
 evaluate = "^0.4.2"
 safetensors = "^0.5.0"
@@ -41,6 +40,7 @@ google-generativeai = "^0.8.0"
 anthropic = "^0.48.0"
 mistralai = "^1.2.3"
 pre-commit = "^4.1.0"
+peft = {git = "https://github.com/huggingface/peft"}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
